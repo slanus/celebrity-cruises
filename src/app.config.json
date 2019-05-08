@@ -1,0 +1,18 @@
+{
+  "client": {
+    "basePath": "/",
+    "html5Mode": true,
+    "routes": [
+      {
+        "path": "/",
+        "templateUrl": "src/controllers/edit-reservation/edit-reservation.controller.html",
+        "controller": "editReservationController"
+      },
+      {
+        "path": "/reservation/:id",
+        "templateUrl": "src/controllers/find-reservation/find-reservation.controller.html",
+        "controller": "findReservationController"
+      }
+    ]
+  }
+}
