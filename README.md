@@ -4,5 +4,7 @@ Celebrity cruises demo app using AngularJS, TypeScript, Components and Unit Test
 
 # Install
 
+```
 npm install
 npm start
+```
