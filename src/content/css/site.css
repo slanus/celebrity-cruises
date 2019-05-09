@@ -37,3 +37,33 @@ trip-info .btn.btn-primary {
   padding: 10px 30px;
   font-size: 12px;
 }
+
+trip-info form.disabled input[type="text"],
+trip-info form.disabled select {
+  border: none;
+  font-weight: 600;
+  background: #fff;
+}
+trip-info form.disabled select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+trip-info form.disabled small {
+  color: #1c85b9;
+}
+
+trip-info table {
+  width: 100%;
+}
+
+trip-info table tr td {
+  width: 33.3%;
+}
+
+trip-info form.disabled small.sail-date {
+  float: left;
+  margin-left: 10px;
+}
