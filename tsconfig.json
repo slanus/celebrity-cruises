@@ -7,9 +7,13 @@
     "target": "es6"
   },
   "files": [
+    "typings/index.d.ts",
     "src/routes.ts",
     "src/main.ts",
     "src/services/tripService.ts",
-    "src/controllers/edit-reservation/edit-reservation.controller.ts"
-  ]
+    "src/services/dateService.ts",
+    "src/controllers/edit-reservation/edit-reservation.controller.ts",
+    "src/controllers/find-reservation/find-reservation.controller.ts"
+  ],
+  "exclude": ["node_modules", "typings"]
 }
