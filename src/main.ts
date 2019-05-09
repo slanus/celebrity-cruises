@@ -10,6 +10,7 @@ import { FindReservationController } from "./controllers/find-reservation/find-r
 import { registerRoutesFor } from "./routes";
 import { TripInfoComponent } from "./components/trip-info/trip-info.component";
 import { TripInfoService } from "./services/trip-info.service";
+import { DateService } from "./services/date.service";
 
 export module app {
   "use strict";
@@ -25,7 +26,8 @@ export module app {
     .controller("editReservationController", EditReservationController)
     .controller("findReservationController", FindReservationController)
     .component("tripInfo", TripInfoComponent)
-    .service("tripInfoService", TripInfoService);
+    .service("tripInfoService", TripInfoService)
+    .service("dateService", DateService);
 
   registerRoutesFor(app);
 
