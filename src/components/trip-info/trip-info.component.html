@@ -1,58 +1,130 @@
-<form>
-  <div class="row">
-    <div class="col-md-12">
-      <img
-        src="/src/content/img/header.png"
-        alt="Connect to flights by celebrity"
-      />
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <h3 class="title text-center">Enter Your Trip Information</h3>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="text" placeholder="Reservation Number" />
-    </div>
-    <div class="form-group col-md-6">
-      <input type="text" placeholder="Last name on Reservation" />
-    </div>
-  </div>
-  <br />
-  <br />
-  <br />
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label class="small">SHIP</label>
-      <br />
-      <select></select>
+<form ng-class="{ 'disabled': $ctrl.readOnly }">
+  <fieldset ng-disabled="$ctrl.readOnly">
+    <div class="row">
+      <div class="col-md-12">
+        <img
+          src="/src/content/img/header.png"
+          alt="Connect to flights by celebrity"
+        />
+      </div>
     </div>
 
-    <div class="form-group col-md-6">
-      <label class="small">SAIL DATE</label>
-      <br />
-      <select class="col-md-4"></select>
-      <select class="col-md-4"></select>
-      <select class="col-md-4"></select>
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="title text-center">Enter Your Trip Information</h3>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <div class="form-check text-center">
-      <input class="form-check-input" type="checkbox" />
-      <label class="form-check-label remember-info">
-        Remember my information
-      </label>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <small ng-hide="!$ctrl.readOnly">Reservation Number</small>
+        <input
+          ng-model="$ctrl.tripInfo.reservationNumber"
+          maxlength="7"
+          type="text"
+          required
+          placeholder="Reservation Number"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <small ng-hide="!$ctrl.readOnly">Reservation Number</small>
+        <input
+          ng-model="$ctrl.tripInfo.lastNameOnReservation"
+          type="text"
+          required
+          placeholder="Last name on Reservation"
+        />
+      </div>
     </div>
-  </div>
+    <br />
+    <br />
+    <br />
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="small">SHIP</label>
+        <br />
+        <small ng-hide="!$ctrl.readOnly">Reservation Number</small>
+        <select
+          required
+          ng-model="$ctrl.tripInfo.ship"
+          ng-options="ship.id as ship.name for ship in $ctrl.ships"
+        >
+          <option value="" disabled selected>Select Ship</option>
+        </select>
+      </div>
 
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">
+      <div class="form-group col-md-6">
+        <label class="small">SAIL DATE</label>
+        <br />
+        <table>
+          <tr ng-hide="!$ctrl.readOnly">
+            <td><small>Month</small></td>
+            <td><small>Day</small></td>
+            <td><small>Year</small></td>
+          </tr>
+          <tr>
+            <td>
+              <select
+                required
+                ng-model="$ctrl.tripInfo.month"
+                ng-options="month.number as month.name for month in $ctrl.months"
+              >
+                <option value="" disabled selected>Month</option>
+              </select>
+            </td>
+            <td>
+              <select
+                required
+                ng-model="$ctrl.tripInfo.day"
+                ng-options="day as day for day in $ctrl.days"
+              >
+                <option value="" disabled selected>Day</option>
+              </select>
+            </td>
+            <td>
+              <select
+                required
+                ng-model="$ctrl.tripInfo.year"
+                ng-options="year as year for year in $ctrl.years"
+              >
+                <option value="" disabled selected>Year</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div ng-if="!$ctrl.readOnly" class="form-group">
+      <div class="form-check text-center">
+        <input
+          ng-model="$ctrl.tripInfo.rememberInfo"
+          class="form-check-input"
+          type="checkbox"
+        />
+        <label class="form-check-label remember-info">
+          Remember my information
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  <div ng-if="!$ctrl.readOnly" class="text-center">
+    <button
+      type="button"
+      ng-click="$ctrl.findReservation()"
+      class="btn btn-primary"
+    >
       FIND RESERVATION
+    </button>
+  </div>
+
+  <div ng-if="$ctrl.readOnly" class="text-center">
+    <button
+      type="button"
+      ng-click="$ctrl.editReservation()"
+      class="btn btn-primary"
+    >
+      EDIT RESERVATION
     </button>
   </div>
 </form>
