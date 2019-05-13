@@ -9,7 +9,7 @@ export class TripInfoService {
         name: "CELEBRITY CONSTELLATION"
       },
       {
-        id: 1,
+        id: 2,
         name: "ANOTHER SHIP"
       }
     ];
